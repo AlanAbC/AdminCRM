@@ -41,7 +41,6 @@ class BD{
                             $sentenceFields .= $data['fields'][$i] . ', ';
                         }
                     }
-                    print("SELECT {$sentenceFields} FROM {$data['table']} WHERE {$data['where']};");
 
                     $results = $con -> query("SELECT {$sentenceFields} FROM {$data['table']} WHERE {$data['where']};");
 
@@ -50,7 +49,9 @@ class BD{
                         array_push($response, $row);
                     }
 
-                    return json_encode($response);
+                    $con -> close();
+
+                    return $response;
 
                 }else{
 
@@ -70,7 +71,9 @@ class BD{
                         array_push($response, $row);
                     }
 
-                    return json_encode($response);
+                    $con -> close();
+
+                    return $response;
 
                 }
             }else{
@@ -85,7 +88,9 @@ class BD{
                         array_push($response, $row);
                     }
 
-                    return json_encode($response);
+                    $con -> close();
+
+                    return $response;
 
                 }else{
 
@@ -96,7 +101,9 @@ class BD{
                         array_push($response, $row);
                     }
 
-                    return json_encode($response);
+                    $con -> close();
+
+                    return $response;
 
                 }
             }
@@ -107,6 +114,59 @@ class BD{
     }
 
     public function insert($data){
+        $table = 'table';
+        $fields = 'fields';
+
+        $con = $this->connect();
+
+        // Valida que exista una tabla para hacer el select
+        if(array_key_exists($table, $data)){
+
+            // Valida que existan campos de consulta (en caso de que no existan se ejecutara un select all)
+            if(array_key_exists($fields, $data)){
+
+                $insertFields = [];
+                $valuesFields = [];
+
+                foreach ($data['fields'] as $key => $value){
+                    array_push($insertFields, $key);
+                    array_push($valuesFields, $value);
+                }
+
+                $numFields = count($insertFields);
+                $strInsertFields = "";
+                $strValuesField = "";
+
+                for($i = 0; $i < $numFields; $i++){
+                    if($i == $numFields - 1){
+                        $strInsertFields .= $insertFields[$i];
+                        $strValuesField .= "'" . $valuesFields[$i] . "'";
+                    }else{
+                        $strInsertFields .= $insertFields[$i] . ", ";
+                        $strValuesField .= "'" . $valuesFields[$i] . "', ";
+                    }
+                }
+
+                $sql = "INSERT INTO {$data['table']} ({$strInsertFields}) VALUES ({$strValuesField})";
+
+                $result = $con -> query($sql);
+
+                if($result){
+
+                    return 1;
+                }else{
+
+                    return "error when trying to insert the record in the database";
+                }
+
+            }else{
+
+                return "error, missing fields field";
+            }
+        }else{
+
+            return "error, missing table field";
+        }
 
     }
 

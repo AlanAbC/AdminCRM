@@ -8,12 +8,24 @@ if(isset($_POST['action'])){
 
     if($action == 'login'){
         $user = $_POST['user'];
-        $password = $_POST['password'];
+        $password = md5($_POST['password']);
 
         $response = login($user, $password);
 
-        print json_encode(['response' => $response]);
+        print json_encode($response);
 
+    }
+
+    if($action == 'register'){
+        $name = $_POST['name'];
+        $lastName = $_POST['last_name'];
+        $nickname =$_POST['nickname'];
+        $mail = $_POST['mail'];
+        $password = md5($_POST['password']);
+
+        $response = registerUser($name, $lastName, $nickname, $mail, $password);
+
+        print json_encode($response);
     }
 
 }
