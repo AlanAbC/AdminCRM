@@ -1,5 +1,9 @@
 <?php
 
+$encoding = "UTF-8";
+mb_internal_encoding($encoding);
+mb_http_output($encoding);
+
 require_once("objects/BD.php");
 require_once("objects/User.php");
 

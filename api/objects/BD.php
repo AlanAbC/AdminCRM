@@ -1,5 +1,9 @@
 <?php
 
+$encoding = "UTF-8";
+mb_internal_encoding($encoding);
+mb_http_output($encoding);
+
 class BD{
 
     private $host = 'localhost';
