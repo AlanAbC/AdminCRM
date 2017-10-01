@@ -157,18 +157,22 @@ class BD{
 
                 if($result){
 
+                    $con -> close();
                     return 1;
                 }else{
 
+                    $con -> close();
                     return "error when trying to insert the record in the database";
                 }
 
             }else{
 
+                $con -> close();
                 return "error, missing fields field";
             }
         }else{
 
+            $con -> close();
             return "error, missing table field";
         }
 

@@ -70,3 +70,90 @@ function registerUser($name, $lastName, $nickname, $mail, $password){
     }
 
 }
+
+function getProductsType(){
+
+    $data = [
+        'table' => 'products_types',
+    ];
+
+    $bd = new BD();
+    $responseBD = $bd -> select($data);
+
+    if(!empty($responseBD)){
+
+        return ['res' => 1, 'products_types' => $responseBD];
+
+    }else{
+
+        return ["res" => 0];
+    }
+
+}
+
+function getProducts(){
+
+    $data = [
+        'table' => 'products p, products_types t',
+        'fields' => [
+            'p.id',
+            'p.name',
+            'p.description',
+            'p.price',
+            'p.stock',
+            'p.image',
+            't.name as type'
+        ],
+        'where' => 'p.type_id = t.id',
+    ];
+
+    $bd = new BD();
+    $responseBD = $bd -> select($data);
+
+    if(!empty($responseBD)){
+
+        return ['res' => 1, 'products' => $responseBD];
+
+    }else{
+
+        return ["res" => 0];
+    }
+
+}
+
+function getProductsByType($type){
+
+    $data = [
+        'table' => 'products p, products_types t',
+        'fields' => [
+            'p.id',
+            'p.name',
+            'p.description',
+            'p.price',
+            'p.stock',
+            'p.image',
+            't.name as type'
+        ],
+        'where' => 'p.type_id = t.id AND type_id = '.$type,
+    ];
+
+    $bd = new BD();
+    $responseBD = $bd -> select($data);
+
+    if(!empty($responseBD)){
+
+        return ['res' => 1, 'products' => $responseBD];
+
+    }else{
+
+        return ["res" => 0];
+    }
+}
+
+
+
+
+
+
+
+
