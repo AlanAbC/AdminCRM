@@ -2,6 +2,9 @@
 $(document).ready(function(){
 	$('html').niceScroll();
 	$(document).foundation();
+
+	$(".menuusertxt").text(localStorage.getItem("Name") + " " + localStorage.getItem("LastName")) ;
+	$(".username").text(localStorage.getItem("Nickname"));	
 });
 //Seccion de funcionalidad de menu lateral
 var flagmenusuer = 0;
