@@ -1,0 +1,349 @@
+*{
+	padding: 0px;
+	margin: 0px;
+}
+.container{
+	position: relative;
+	float: left;
+	width: 83%;
+	height: 100vh;
+	overflow-y: scroll;
+	background-color: #EEEEEE;
+}
+.header{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 10vh;
+}
+.elementsContainer{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 90vh;
+}
+.sidebar{
+	position: relative;
+	float: left;
+	width: 17%;
+	height: 100vh;
+	background-image: url("../img/mountains.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
+	
+}
+.mask{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 100%;
+	background: rgba(44,44,43,.8);
+}
+.menuhead{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 7vh;
+	box-sizing: border-box;
+	padding-top: 1vh;
+	font-size: 18pt;
+	color: white;
+	border-bottom: .5px solid #BBBBBB;
+	text-align: center;
+}
+.menuuser{
+	position: relative;
+	float: left;
+	width: 100%;
+	padding-top: 3vh;
+	padding-bottom: 1vh;
+	border-bottom: 1px solid #bbbbbb;
+}
+.menuuserimg{
+	position: relative;
+	float: left;
+	width: 25px;
+	border-radius: 50%;
+	margin-left: 10%;
+}
+.menuusertxt{
+	position: relative;
+	float: left;
+	margin-left: 15px;
+	color: white;
+	font-size: 11pt;
+}
+.menuuserarrow{
+	position: relative;
+	float: left;
+	width: 10px;
+	margin-left: 15px;
+	margin-top: 7px;
+}
+.menuuserarrow:hover{
+	cursor: pointer;
+}
+.contmenuusuer{
+	position: relative;
+	float: left;
+	width: 100%;
+}
+.secmenuusuer{
+	position: relative;
+	float: left;
+	width: 80%;
+	margin-left: 10%;
+	color: white;
+	font-size: 12pt;
+	margin-top: 13px;
+}
+.initialtxtmenuuser{
+	position: relative;
+	float: left;
+	margin-left: 10px;
+}
+.txtmenuuser{
+	position: relative;
+	float: left;
+	margin-left: 20px;
+}
+.menusections{
+	position: relative;
+	float: left;
+	width: 100%;
+	margin-top: 5vh;
+}
+.menusection{
+	position: relative;
+	float: left;
+	width: 85%;
+	margin-top: 2vh;
+	padding-top: 1.5vh;
+	box-sizing: border-box;
+	margin-left: 7.5%;
+	height: 6vh;
+	border-radius: 3px;
+	color: white;
+	transition: .5s;
+}
+.menusection:hover{
+	background: rgba(255,255,255,.6);
+	transition: .5s;
+	cursor: pointer;
+}
+.initialtxtmenusection{
+	position: relative;
+	float: left;
+	margin-left: 20px
+}
+.txtmenusection{
+	position: relative;
+	float: left;
+	margin-left: 20px;
+}
+.user{
+	position: relative;
+	float: right;
+	width: 3vh;
+	color: #2C2C2B;
+	margin-right: 4%;
+	margin-top: 3vh 
+}
+.username{
+	position: relative;
+	float: right;
+	margin-top: 3vh;
+	color: #2C2C2B;
+	margin-right: 2%;
+	font-size: 11pt;
+}
+.form{
+	position: relative;
+	float: left;
+	width: 85%;
+	margin-left: 7.5%;
+
+	margin-top: 5%;
+	border-radius: 5px;
+	background: white;
+	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+.display{
+	position: relative;
+	float: left;
+	width: 85%;
+	margin-left: 7.5%;
+
+	margin-top: 5%;
+	border-radius: 5px;
+	background: white;
+	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+.perfil{
+	position: relative;
+	float: left;
+	width: 85%;
+	margin-left: 7.5%;
+
+	margin-top: 5%;
+	border-radius: 5px;
+	background: white;
+	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+.table{
+	position: relative;
+	float: left;
+	width: 85%;
+	margin-left: 7.5%;
+
+	margin-top: 5%;
+	border-radius: 5px;
+	background: white;
+	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+.formheader{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 15%;
+}
+.formcontent{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 85%;
+}
+.tabletitle{
+	position: relative;
+	float: left;
+	padding-left: 20px;
+	padding-right: 20px;
+	width: 70px;
+	margin-top: -35px;
+	border-radius: 5px;
+	padding-top: 20px;
+	padding-bottom: 20px;
+	box-sizing: border-box;
+	margin-left: 3%;
+	color: white;
+	background: #0077BB;
+	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+.txttable{
+	position: relative;
+	float: left;
+	margin-left: 15px;
+	font-size: 15pt;
+	margin-top: 8px;
+	color: #2C2C2B;
+	font-weight: lighter;
+}
+.formtitle{
+	position: relative;
+	float: left;
+	padding-left: 10px;
+	padding-right: 10px;
+	height: 40px;
+	margin-top: -15px;
+	border-radius: 5px;
+	padding-top: 5px;
+	margin-left: 3%;
+	color: white;
+	background: #0077BB;
+	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+.continput{
+	position: relative;
+	float: left;
+	width: 100%;
+	margin-top: 10px;
+}
+.inputtxt{
+	position: relative;
+	float: left;
+	width: 20%;
+	text-align: right;
+	padding-right: 3%;
+	padding-left: 2%;
+	box-sizing: border-box;
+	font-size: 11pt;
+	margin-top: 5px;
+}
+.displaytxt{
+	position: relative;
+	float: left;
+	width: 20%;
+	text-align: right;
+	padding-right: 3%;
+	padding-left: 2%;
+	color: #0077BB;
+	box-sizing: border-box;
+	font-size: 15pt;
+	margin-top: 5px;
+}
+.forminput{
+	position: relative;
+	float: left;
+	width: 70% !important;
+	outline: none !important;
+}
+.txtdisplay{
+	position: relative;
+	float: left;
+	margin-top: 8px;
+	font-size: 13pt;
+	width: 70% !important;
+}
+.contsend{
+	position: relative;
+	float: left;
+	width: 100%;
+
+}
+.sendform{
+	position: relative;
+	float: right;
+	padding-left: 40px;
+	padding-right: 40px;
+	height: 40px;
+	margin-top: 35px;
+	margin-bottom: 30px;
+	border-radius: 5px;
+	padding-top: 7px;
+	margin-right: 7%;
+	color: white;
+	background: #0077BB;
+	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+.tablecontent{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: 60vh;
+	overflow-y: scroll;		
+}
+table{
+	position: relative;
+	float: left;
+	width: 90%;
+	margin-left: 5%;
+	margin-top: 10px;
+	border:none !important;
+}
+thead{
+	background: transparent !important;
+	border:none !important;
+	border-bottom: 1px solid #d9d9d9 !important;
+}
+tbody{
+	border:none !important;
+}
+th{
+	color: #0094EC;
+	border:none !important;
+	font-weight: lighter;
+}
+td{
+	color: #363636;
+	border-bottom: 1px solid #d9d9d9 !important;
+}
