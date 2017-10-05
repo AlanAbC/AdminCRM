@@ -71,6 +71,52 @@ function registerUser($name, $lastName, $nickname, $mail, $password){
 
 }
 
+
+function registerProductType($name , $description){
+    $data = [
+        'table' => 'products_types',
+        'fields' => [
+            'name' => $name,
+            'description' => $description,
+        ]
+    ];
+    $bd = new BD();
+    $responseBD = $bd -> insert($data);
+
+    if($responseBD == 1){
+        return ["res" => 1];
+    }else{
+        return ["res" => 0, "errors" => $responseBD];
+    }
+
+}
+
+function registerProduct($name, $description, $price, $stock, $type_id, $image){
+
+    $data = [
+        'table' => 'products',
+        'fields' => [
+            'name' => $name,
+            'description' => $description,
+            'price' => $price,
+            'stock' => $stock,
+            'image'=> $image,
+        ]
+    ];
+
+    $bd = new BD();
+    $responseBD = $bd -> insert($data);
+
+    if($responseBD == 1){
+
+        return ["res" => 1];
+    }else{
+
+        return ["res" => 0, "errors" => $responseBD];
+    }
+
+}
+
 function getProductsType(){
 
     $data = [
@@ -150,6 +196,63 @@ function getProductsByType($type){
     }
 }
 
+
+//******************************* RATE ********************************
+function registerRate($user_id, $product_id, $score, $comment){
+    $data = [
+        'table' => 'rate',
+        'fields' => [
+            'user_id' => $user_id,
+            'product_id' => $product_id,
+            'score' => $score,
+            'comment' => $comment,
+        ]
+    ];
+
+    $bd = new BD();
+    $responseBD = $bd -> insert($data);
+
+    if($responseBD == 1){
+
+        return ["res" => 1];
+    }else{
+
+        return ["res" => 0, "errors" => $responseBD];
+    }
+
+}
+
+
+function getRatesByProduct($product_id){
+    $data = [
+        'table' => 'products p, rate r, users u',
+        'fields' => [
+            'r.id',
+            'r.score',
+            'r.comment',
+            'u.id',
+            'u.nickname',
+            'p.id',
+            'p.name',
+            'p.description',
+            'p.price',
+            
+        ],
+        'where' => 'p.id = r.product_id AND  r.user_id = u.id AND r.product_id = '.$product_id,
+    ];
+
+    $bd = new BD();
+    $responseBD = $bd -> select($data);
+
+    if(!empty($responseBD)){
+
+        return ['res' => 1, 'rates' => $responseBD];
+
+    }else{
+
+        return ["res" => 0];
+    }
+}
 
 
 
