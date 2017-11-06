@@ -71,7 +71,9 @@
 	float: left;
 	margin-left: 15px;
 	color: white;
-	font-size: 11pt;
+	padding-top: 3px;
+	box-sizing: border-box;
+	font-size: 9pt;
 }
 .menuuserarrow{
 	position: relative;
@@ -82,6 +84,36 @@
 }
 .menuuserarrow:hover{
 	cursor: pointer;
+}
+.edit{
+	position: relative;
+	float: left;
+	width: 25%;
+	height: 90%;
+	margin-top: 5%;
+	background: red;
+}
+.iconoptedit{
+	position: relative;
+	float: left;
+	width: 25px;
+	color: white;
+	border-radius: 5px;
+	background: #00BB44;
+	padding: 5px;
+	margin-left: 5px;
+	box-sizing: border-box;		
+}
+.iconoptdelete{
+	position: relative;
+	float: left;
+	width: 25px;
+	color: white;
+	margin-left: 15px;
+	border-radius: 5px;
+	background: #F80E31;		
+	padding: 5px;
+	box-sizing: border-box;		
 }
 .contmenuusuer{
 	position: relative;
@@ -126,10 +158,26 @@
 	color: white;
 	transition: .5s;
 }
+.menusubsections{
+	position: relative;
+	float: left;
+	width:90%;
+	margin-left: 5%; 
+}
 .menusection:hover{
 	background: rgba(255,255,255,.6);
 	transition: .5s;
 	cursor: pointer;
+}
+.elementsselection{
+	position: relative;
+	float: left;
+	width: 60%;
+	background: white;
+	margin-top: 20px;
+	margin-left: 20%;
+	border-radius: 5px;
+	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
 }
 .initialtxtmenusection{
 	position: relative;
@@ -140,7 +188,7 @@
 	position: relative;
 	float: left;
 	margin-left: 20px;
-}
+}		
 .user{
 	position: relative;
 	float: right;
@@ -156,6 +204,9 @@
 	color: #2C2C2B;
 	margin-right: 2%;
 	font-size: 11pt;
+}
+.username:hover{
+	cursor: pointer;
 }
 .form{
 	position: relative;
@@ -281,6 +332,20 @@
 	font-size: 15pt;
 	margin-top: 5px;
 }
+.elementselection{
+	position: relative;
+	float: left;
+	width: 30%;
+	height: 30px;
+	color: white;
+	margin-top: 17px;
+	border-radius: 5px;
+	margin-left: 13.3333%;
+	background: #0077BB;
+	text-align: center;
+	padding-top: 3px;
+	box-sizing: border-box;
+}
 .forminput{
 	position: relative;
 	float: left;
@@ -299,6 +364,47 @@
 	float: left;
 	width: 100%;
 
+}
+.containerheaderuser{
+	position: relative;
+	float: right;
+	height: 100%;
+	width: 10vw;
+	margin-right: 5vw;
+}
+#verPerfil:hover{
+	cursor: pointer;
+}
+.clientes{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: auto;
+	background: transparent;
+}
+.userPerf{
+	position: relative;
+	float: left;
+	width: 100%;
+	height: auto;
+	background: transparent;
+}
+.logout{
+	position: relative;
+	float: right;
+	width: 87%;
+	text-align: center;
+	border-radius: 5px;
+	padding-top: 4px;
+	box-sizing: border-box;
+	font-size: 10pt;
+	box-shadow: 3px 3px 3px rgba(0,0,0,.3);
+	background: white;
+	height: 50%;
+	z-index: 150;
+}
+.logout:hover{
+	cursor: pointer;
 }
 .sendform{
 	position: relative;

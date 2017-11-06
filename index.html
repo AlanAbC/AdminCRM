@@ -24,7 +24,7 @@
 				<p class="menuusertxt"></p>
 				<img src="img/down-arrow.png" alt="" class="menuuserarrow">
 				<div class="contmenuusuer" hidden>
-					<div class="secmenuusuer">
+					<div class="secmenuusuer" id="verPerfil">
 						<p class="initialtxtmenuuser"><strong>MP</strong></p>
 						<p class="txtmenuuser">Mi Perfil</p>
 					</div>
@@ -35,9 +35,9 @@
 				</div>
 			</div>
 			<div class="menusections">
-				<div class="menusection">
-					<p class="initialtxtmenusection"><strong>P</strong></p>
-					<p class="txtmenusection">Prueba</p>
+				<div class="menusection" id="menuClients">
+					<p class="initialtxtmenusection"><strong>C</strong></p>
+					<p class="txtmenusection">Clientes</p>
 				</div>
 				<div class="menusection">
 					<p class="initialtxtmenusection"><strong>P</strong></p>
@@ -60,101 +60,146 @@
 	</div>
 	<div class="container">
 		<div class="header">
-			<img src="img/man-user.png" class="user" alt="">
-			<p class="username"></p>
+			<div class="containerheaderuser">	
+				<img src="img/man-user.png" class="user" alt="">
+				<p class="username"></p>
+				<p class="logout" hidden>Cerrar Sesion</p>
+			</div>
 		</div>
 		<div class="elementsContainer">
 
-
-			<div class="table">
-				<div class="formheader">
-					<img src="img/table-grid.png" class="tabletitle">
-					<p class="txttable">Tabla Prueba</p>
+			<div class="clientes" hidden>
+				<!--Seccion de elementos dec seleccion de operaciones con los clientes-->
+				<div class="elementsselection">
+					<p class="elementselection" id="showClients">Ver Clientes</p>
+					<p class="elementselection" id="addClient">Agregar Clientes</p>
 				</div>
-				<div class="tablecontent">
-					<table>
-						<thead>
-							<tr>
-								<th>Prueba</th>
-								<th>Prueba</th>
-								<th>Prueba</th>
-								<th>Prueba</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-							</tr>
-							<tr>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-							</tr>
-							<tr>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-							</tr>
-							<tr>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-							</tr>
-							<tr>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-							</tr>
-							<tr>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-							</tr>
-							<tr>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-								<td>Elemento</td>
-							</tr>
-						</tbody>
-					</table>
+				<!--Tabla de despleige de clientes-->
+				<div class="table" id="TableClients">
+					<div class="formheader">
+						<img src="img/table-grid.png" class="tabletitle">
+						<p class="txttable">Clientes</p>
+					</div>
+					<div class="tablecontent">
+						<table>
+							<thead>
+								<tr>
+									<th>Nombre</th>
+									<th>Usuario</th>
+									<th>Correo</th>
+									<th>Opciones</th>
+								</tr>
+							</thead>
+							<tbody class="tbodyClients">
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!--Formulario Alta clientes-->
+				<div class="form" id="addClientForm" hidden>
+					<div class="formheader">
+						<p class="formtitle">Agregar Cliente</p>
+					</div>
+					<div class="formcontent">
+						<div class="continput">	
+							<p class="inputtxt">Nombre</p>
+							<input id="clientName"  type="text" class="forminput" placeholder="ejemp. Juan">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Apellido</p>
+							<input id="clientLastName" type="text" class="forminput" placeholder="ejemp. Perez Martinez">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Usuario</p>
+							<input id="clientUser" type="text" class="forminput" placeholder="ejemp. User123">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Correo</p>
+							<input id="clientMail" type="text" class="forminput" placeholder="ejemp. hola@ejem.com">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Password</p>
+							<input id="clientPassword" type="password" class="forminput" placeholder="***********">
+						</div>
+						<div class="contsend">
+							<p class="sendform" id="clientSend">SEND</p>
+						</div>
+					</div>
+				</div>
+				<!--Formulario actualizacion de clientes-->
+				<div class="form" id="updateClientForm" hidden>
+					<div class="formheader">
+						<p class="formtitle">Actualizar Cliente</p>
+					</div>
+					<div class="formcontent">
+						<div class="continput">	
+							<p class="inputtxt">Nombre</p>
+							<input id="upClientName"  type="text" class="forminput" placeholder="ejemp. Juan">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Apellido</p>
+							<input id="upClientLastName" type="text" class="forminput" placeholder="ejemp. Perez Martinez">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Usuario</p>
+							<input id="upClientUser" type="text" class="forminput" placeholder="ejemp. User123">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Correo</p>
+							<input id="upClientMail" type="text" class="forminput" placeholder="ejemp. hola@ejem.com">
+						</div>
+						<div class="contsend">
+							<p class="sendform" onclick="updateClient(event)" id="clientSendUpdate">SEND</p>
+						</div>
+					</div>
+				</div>
+				<!--Seccion de despliegue individual de clientes-->
+				<div class="display" hidden>
+					<div class="formheader">
+						<img src="img/file.png" class="tabletitle">
+						<p class="txttable">Prueba</p>
+					</div>
+					<div class="formcontent">
+						<div class="continput">	
+							<p class="displaytxt">Txt Prueba</p>
+							<p class="txtdisplay">Texto de Prueba</p>
+						</div>
+						<div class="continput">	
+							<p class="displaytxt">Txt Prueba</p>
+							<p class="txtdisplay">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo molestiae saepe at illum iste quas quae, dolorem ducimus temporibus numquam accusantium, quam tempora magni dolore dolores aliquam dolor sunt nihil.</p>
+						</div>
+						<div class="continput">	
+							<p class="displaytxt">Txt Prueba</p>
+							<p class="txtdisplay">Texto de Prueba</p>
+						</div>
+					</div>
 				</div>
 			</div>
-
-
-
-			<div class="form">
+			<div class="userPerf" hidden>
+				<div class="perfil">
 				<div class="formheader">
-					<p class="formtitle">Agregar Prueba</p>
+					<img src="img/man-user2.png" class="tabletitle">
+					<p class="txttable">Mi Perfil</p>
 				</div>
 				<div class="formcontent">
 					<div class="continput">	
-						<p class="inputtxt">Txt Prueba</p>
-						<input type="text" class="forminput">
+						<p class="displaytxt">Nombre</p>
+						<p class="txtdisplay" id="txtNameInfo"></p>
 					</div>
 					<div class="continput">	
-						<p class="inputtxt">Txt Prueba</p>
-						<input type="text" class="forminput">
+						<p class="displaytxt">Usuario</p>
+						<p class="txtdisplay" id="txtUserInfo"></p>
 					</div>
 					<div class="continput">	
-						<p class="inputtxt">Txt Prueba</p>
-						<input type="text" class="forminput">
-					</div>
-					<div class="contsend">
-						<p class="sendform">SEND</p>
+						<p class="displaytxt">Correo</p>
+						<p class="txtdisplay" id="txtMailInfo"></p>
 					</div>
 				</div>
+			</div>
 			</div>	
 
-			<div class="display">
+			<div class="display" hidden>
 				<div class="formheader">
 					<img src="img/file.png" class="tabletitle">
 					<p class="txttable">Prueba</p>
@@ -175,26 +220,7 @@
 				</div>
 			</div>
 
-			<div class="perfil">
-				<div class="formheader">
-					<img src="img/man-user2.png" class="tabletitle">
-					<p class="txttable">Mi Perfil</p>
-				</div>
-				<div class="formcontent">
-					<div class="continput">	
-						<p class="displaytxt">Txt Prueba</p>
-						<p class="txtdisplay">Texto de Prueba</p>
-					</div>
-					<div class="continput">	
-						<p class="displaytxt">Txt Prueba</p>
-						<p class="txtdisplay">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo molestiae saepe at illum iste quas quae, dolorem ducimus temporibus numquam accusantium, quam tempora magni dolore dolores aliquam dolor sunt nihil.</p>
-					</div>
-					<div class="continput">	
-						<p class="displaytxt">Txt Prueba</p>
-						<p class="txtdisplay">Texto de Prueba</p>
-					</div>
-				</div>
-			</div>		
+					
 		</div>
 	</div>
 	
@@ -208,6 +234,9 @@
     <script src="js/foundation.min.js"></script>
     <script src="js/skrollr.min.js"></script>
 	<script src="js/mandrill.js"></script>
+	<!-- Minified version of `es6-promise-auto` below. -->
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
     <script src="js/swal.js"></script>
     <script src="js/nicescroll.js"></script>
     <script src="js/index.js"></script>
