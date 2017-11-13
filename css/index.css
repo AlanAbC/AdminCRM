@@ -213,7 +213,7 @@
 	float: left;
 	width: 85%;
 	margin-left: 7.5%;
-
+	margin-bottom: 50px;
 	margin-top: 5%;
 	border-radius: 5px;
 	background: white;
@@ -246,11 +246,30 @@
 	float: left;
 	width: 85%;
 	margin-left: 7.5%;
-
+	margin-bottom: 50px;
 	margin-top: 5%;
 	border-radius: 5px;
 	background: white;
 	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+.estadistics_container{
+	position: relative;
+	float: left;
+	width: 80%;
+	height: 400px;
+	margin-left: 10%;
+	margin-bottom: 50px;
+	margin-top: 5%;
+	border-radius: 5px;
+	background: white;
+	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+.graficas{
+	position: relative;
+	float: left;
+	width: 90% !important;
+	margin-left: 5%;
+	height: 320px !important;
 }
 .formheader{
 	position: relative;
@@ -420,6 +439,10 @@
 	color: white;
 	background: #0077BB;
 	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+.img_product{
+	width: 50px;
+	margin-left: 5px;
 }
 .tablecontent{
 	position: relative;

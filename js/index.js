@@ -24,7 +24,7 @@ $(document).ready(function(){
 		var urlGetProduct = url + "products/get_products/";
 		$.get(urlGetProduct, function(response) {
 			for(var i=0; i<(response.data).length;i++){
-				$(".tbodyProducts").append("<tr><td>"+(response.data[i]).name+"</td><td>"+(response.data[i]).price+"</td><td>"+(response.data[i]).stock+"</td><td><img src='img/edit.png' class='iconoptedit' onclick='showProductUpdate(event)' id='"+(response.data[i]).id+"'><img src='img/delete-button.png' onclick='deleteProduct(event)' id='"+(response.data[i]).id+"' class='iconoptdelete deleteClient'></td></tr>");
+				$(".tbodyProducts").append("<tr><td><img class='img_product' src='"+(response.data[i]).image+"'/></td><td>"+(response.data[i]).name+"</td><td>"+(response.data[i]).price+"</td><td>"+(response.data[i]).stock+"</td><td><img src='img/edit.png' class='iconoptedit' onclick='showProductUpdate(event)' id='"+(response.data[i]).id+"'><img src='img/delete-button.png' onclick='deleteProduct(event)' id='"+(response.data[i]).id+"' class='iconoptdelete deleteClient'></td></tr>");
 			}
 		});
 		//Seccion que rellena tabla de categorias
@@ -82,11 +82,20 @@ $("#updatePerfil").click(function(event) {
 		flagVerPerfil--;
 	}	
 });
+$("#menuEstadisticas").click(function(event) {
+	$(".userPerf").hide();
+	$("#updatePerfForm").hide();
+	$(".productos").hide('400');
+	$(".productTypes").hide('400');
+	$(".estadisticas").slideDown('400');
+	$(".clientes").hide('400');
+});
 $("#menuClients").click(function(event) {
 	$(".userPerf").hide();
 	$("#updatePerfForm").hide();
 	$(".productos").hide('400');
 	$(".productTypes").hide('400');
+	$(".estadisticas").hide('400');
 	$(".clientes").slideDown('400');
 });
 $("#menuProducts").click(function(event) {
@@ -94,12 +103,14 @@ $("#menuProducts").click(function(event) {
 	$("#updatePerfForm").hide();
 	$(".clientes").hide('400');
 	$(".productTypes").hide('400');
+	$(".estadisticas").hide('400');
 	$(".productos").slideDown('400');
 });
 $("#menuProductTypes").click(function(event) {
 	$(".userPerf").hide();
 	$("#updatePerfForm").hide();
 	$(".clientes").hide('400');
+	$(".estadisticas").hide('400');
 	$(".productos").hide('400');
 	$(".productTypes").slideDown('400');
 });
@@ -372,7 +383,7 @@ $(".logout").click(function(event) {
 						 $.get(urlGetProduct, function(response) {
 							for(var i=0; i<(response.data).length;i++){
 								console.log(response.data[i]);
-								$(".tbodyProducts").append("<tr><td>"+(response.data[i]).name+"</td><td>"+(response.data[i]).price+"</td><td>"+(response.data[i]).stock+"</td><td><img src='img/edit.png' class='iconoptedit' onclick='showProductUpdate(event)' id='"+(response.data[i]).id+"'><img src='img/delete-button.png' onclick='deleteProduct(event)' id='"+(response.data[i]).id+"' class='iconoptdelete deleteClient'></td></tr>");
+								$(".tbodyProducts").append("<tr><td><img class='img_product' src='"+(response.data[i]).image+"'/></td><td>"+(response.data[i]).name+"</td><td>"+(response.data[i]).price+"</td><td>"+(response.data[i]).stock+"</td><td><img src='img/edit.png' class='iconoptedit' onclick='showProductUpdate(event)' id='"+(response.data[i]).id+"'><img src='img/delete-button.png' onclick='deleteProduct(event)' id='"+(response.data[i]).id+"' class='iconoptdelete deleteClient'></td></tr>");
 							}
 						});
 					}else{
@@ -443,7 +454,7 @@ $(".logout").click(function(event) {
 						 $.get(urlGetProduct, function(response) {
 							for(var i=0; i<(response.data).length;i++){
 								console.log(response.data[i]);
-								$(".tbodyProducts").append("<tr><td>"+(response.data[i]).name+"</td><td>"+(response.data[i]).price+"</td><td>"+(response.data[i]).stock+"</td><td><img src='img/edit.png' class='iconoptedit' onclick='showProductUpdate(event)' id='"+(response.data[i]).id+"'><img src='img/delete-button.png' onclick='deleteProduct(event)' id='"+(response.data[i]).id+"' class='iconoptdelete deleteClient'></td></tr>");
+								$(".tbodyProducts").append("<tr><td><img class='img_product' src='"+(response.data[i]).image+"'/></td><td>"+(response.data[i]).name+"</td><td>"+(response.data[i]).price+"</td><td>"+(response.data[i]).stock+"</td><td><img src='img/edit.png' class='iconoptedit' onclick='showProductUpdate(event)' id='"+(response.data[i]).id+"'><img src='img/delete-button.png' onclick='deleteProduct(event)' id='"+(response.data[i]).id+"' class='iconoptdelete deleteClient'></td></tr>");
 							}
 						});
 						 $("#TableProducts").slideDown('400');
@@ -484,7 +495,7 @@ $(".logout").click(function(event) {
 									 $.get(urlGetProduct, function(response) {
 										for(var i=0; i<(response.data).length;i++){
 											console.log(response.data[i]);
-											$(".tbodyProducts").append("<tr><td>"+(response.data[i]).name+"</td><td>"+(response.data[i]).price+"</td><td>"+(response.data[i]).stock+"</td><td><img src='img/edit.png' class='iconoptedit' onclick='showProductUpdate(event)' id='"+(response.data[i]).id+"'><img src='img/delete-button.png' onclick='deleteProduct(event)' id='"+(response.data[i]).id+"' class='iconoptdelete deleteClient'></td></tr>");
+											$(".tbodyProducts").append("<tr><td><img class='img_product' src='"+(response.data[i]).image+"'/></td><td>"+(response.data[i]).name+"</td><td>"+(response.data[i]).price+"</td><td>"+(response.data[i]).stock+"</td><td><img src='img/edit.png' class='iconoptedit' onclick='showProductUpdate(event)' id='"+(response.data[i]).id+"'><img src='img/delete-button.png' onclick='deleteProduct(event)' id='"+(response.data[i]).id+"' class='iconoptdelete deleteClient'></td></tr>");
 										}
 									});
 								}else{
@@ -653,3 +664,43 @@ $(".logout").click(function(event) {
 						
 					})
 		}
+
+//Seccion de estadisticas
+
+//var ctx = document.getElementById("myChartFeeling").getContext('2d');
+var myChart = new Chart($("#myChartFeeling"), {
+    type: 'bar',
+    data: {
+        labels: ["1 Estrellas", "2 Estrellas", "3 Estrellas", "4 Estrellas", "5 Estrellas"],
+        datasets: [{
+            label: '# of Votes',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255,99,132,1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});

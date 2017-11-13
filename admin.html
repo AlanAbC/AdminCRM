@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>AdminCRM</title>
+
+	<!-- STYLE ZONE -->
+	<link rel="stylesheet" href="css/index.css">
+	<link rel="stylesheet" href="css/swiper.min.css">  
+	<link rel="stylesheet" href="css/normalize.css">
+	<link rel="stylesheet" href="css/foundation.min.css">
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/hover.css">
+	<link rel="stylesheet" href="css/swal.css">
+	<!-- STYLE ZONE -->
+
+</head>
+<body>
+	<div class="sidebar">
+		<div class="mask">
+			<div class="menuhead">CRM</div>
+			<div class="menuuser">
+				<img src="img/man-user2.png" alt="" class="menuuserimg">
+				<p class="menuusertxt"></p>
+				<img src="img/down-arrow.png" alt="" class="menuuserarrow">
+				<div class="contmenuusuer" hidden>
+					<div class="secmenuusuer" id="verPerfil">
+						<p class="initialtxtmenuuser"><strong>MP</strong></p>
+						<p class="txtmenuuser">Mi Perfil</p>
+					</div>
+					<div class="secmenuusuer" id="updatePerfil">
+						<p class="initialtxtmenuuser"><strong>EP</strong></p>
+						<p class="txtmenuuser">Editar Perfil</p>
+					</div>
+				</div>
+			</div>
+			<div class="menusections">
+				<div class="menusection" id="menuEstadisticas">
+					<p class="initialtxtmenusection"><strong>E</strong></p>
+					<p class="txtmenusection">Estadisticas</p>
+				</div>
+				<div class="menusection" id="menuClients">
+					<p class="initialtxtmenusection"><strong>C</strong></p>
+					<p class="txtmenusection">Clientes</p>
+				</div>
+				<div class="menusection" id="menuProducts">
+					<p class="initialtxtmenusection"><strong>P</strong></p>
+					<p class="txtmenusection">Productos</p>
+				</div>
+				<div class="menusection" id="menuProductTypes">
+					<p class="initialtxtmenusection"><strong>C</strong></p>
+					<p class="txtmenusection">Categorias</p>
+				</div>
+			</div>	
+		</div>
+	</div>
+	<div class="container">
+		<div class="header">
+			<div class="containerheaderuser">	
+				<img src="img/man-user.png" class="user" alt="">
+				<p class="username"></p>
+				<p class="logout" hidden>Cerrar Sesion</p>
+			</div>
+		</div>
+		<div class="elementsContainer">
+
+			<div class="clientes" hidden>
+				<!--Seccion de elementos dec seleccion de operaciones con los clientes-->
+				<div class="elementsselection">
+					<p class="elementselection" id="showClients">Ver Clientes</p>
+					<p class="elementselection" id="addClient">Agregar Clientes</p>
+				</div>
+				<!--Tabla de despleige de clientes-->
+				<div class="table" id="TableClients">
+					<div class="formheader">
+						<img src="img/table-grid.png" class="tabletitle">
+						<p class="txttable">Clientes</p>
+					</div>
+					<div class="tablecontent">
+						<table>
+							<thead>
+								<tr>
+									<th>Nombre</th>
+									<th>Usuario</th>
+									<th>Correo</th>
+									<th>Opciones</th>
+								</tr>
+							</thead>
+							<tbody class="tbodyClients">
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!--Formulario Alta clientes-->
+				<div class="form" id="addClientForm" hidden>
+					<div class="formheader">
+						<p class="formtitle">Agregar Cliente</p>
+					</div>
+					<div class="formcontent">
+						<div class="continput">	
+							<p class="inputtxt">Nombre</p>
+							<input id="clientName"  type="text" class="forminput" placeholder="ejemp. Juan">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Apellido</p>
+							<input id="clientLastName" type="text" class="forminput" placeholder="ejemp. Perez Martinez">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Usuario</p>
+							<input id="clientUser" type="text" class="forminput" placeholder="ejemp. User123">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Correo</p>
+							<input id="clientMail" type="text" class="forminput" placeholder="ejemp. hola@ejem.com">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Password</p>
+							<input id="clientPassword" type="password" class="forminput" placeholder="***********">
+						</div>
+						<div class="contsend">
+							<p class="sendform" id="clientSend">SEND</p>
+						</div>
+					</div>
+				</div>
+				<!--Formulario actualizacion de clientes-->
+				<div class="form" id="updateClientForm" hidden>
+					<div class="formheader">
+						<p class="formtitle">Actualizar Cliente</p>
+					</div>
+					<div class="formcontent">
+						<div class="continput">	
+							<p class="inputtxt">Nombre</p>
+							<input id="upClientName"  type="text" class="forminput" placeholder="ejemp. Juan">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Apellido</p>
+							<input id="upClientLastName" type="text" class="forminput" placeholder="ejemp. Perez Martinez">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Usuario</p>
+							<input id="upClientUser" type="text" class="forminput" placeholder="ejemp. User123">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Correo</p>
+							<input id="upClientMail" type="text" class="forminput" placeholder="ejemp. hola@ejem.com">
+						</div>
+						<div class="contsend">
+							<p class="sendform" onclick="updateClient(event)" id="clientSendUpdate">SEND</p>
+						</div>
+					</div>
+				</div>
+				<!--Seccion de despliegue individual de clientes-->
+				<div class="display" hidden>
+					<div class="formheader">
+						<img src="img/file.png" class="tabletitle">
+						<p class="txttable">Prueba</p>
+					</div>
+					<div class="formcontent">
+						<div class="continput">	
+							<p class="displaytxt">Txt Prueba</p>
+							<p class="txtdisplay">Texto de Prueba</p>
+						</div>
+						<div class="continput">	
+							<p class="displaytxt">Txt Prueba</p>
+							<p class="txtdisplay">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo molestiae saepe at illum iste quas quae, dolorem ducimus temporibus numquam accusantium, quam tempora magni dolore dolores aliquam dolor sunt nihil.</p>
+						</div>
+						<div class="continput">	
+							<p class="displaytxt">Txt Prueba</p>
+							<p class="txtdisplay">Texto de Prueba</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="estadisticas">
+				<div class="estadistics_container" id="clients_feelings">
+					<div class="formheader">
+						<img src="img/bar-chart.png" class="tabletitle">
+						<p class="txttable">Felicidad de los clientes</p>
+					</div>
+					<canvas class="graficas" id="myChartFeeling"></canvas>
+				</div>
+				<div class="estadistics_container" id="clients_statistics">
+					<div class="formheader">
+						<img src="img/bar-chart.png" class="tabletitle">
+						<p class="txttable">Clientes</p>
+					</div>
+					<canvas class="graficas" id="myChart"></canvas>
+				</div>
+				<div class="estadistics_container" id="clients_statistics">
+					<div class="formheader">
+						<img src="img/bar-chart.png" class="tabletitle">
+						<p class="txttable">Productos</p>
+					</div>
+					<canvas class="graficas" id="myChart"></canvas>
+				</div>
+			</div>
+			<div class="productos" hidden>
+				<!--Seccion de elementos dec seleccion de operaciones con los clientes-->
+				<div class="elementsselection">
+					<p class="elementselection" id="showProducts">Ver Productos</p>
+					<p class="elementselection" id="addProduct">Agregar Productos</p>
+				</div>
+				<!--Tabla de despleige de productos-->
+				<div class="table" id="TableProducts">
+					<div class="formheader">
+						<img src="img/table-grid.png" class="tabletitle">
+						<p class="txttable">Productos</p>
+					</div>
+					<div class="tablecontent">
+						<table>
+							<thead>
+								<tr>
+									<th>Imagen</th>
+									<th>Nombre</th>
+									<th>Precio</th>
+									<th>Stock</th>
+									<th>Opciones</th>
+								</tr>
+							</thead>
+							<tbody class="tbodyProducts">
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!--Formulario Alta productos-->
+				<div class="form" id="addProductForm" hidden>
+					<div class="formheader">
+						<p class="formtitle">Agregar Producto</p>
+					</div>
+					<div class="formcontent">
+						<div class="continput">	
+							<p class="inputtxt">Nombre</p>
+							<input id="productName"  type="text" class="forminput" placeholder="ejemp. Product">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Descripcion</p>
+							<input id="productDescripcion" type="text" class="forminput" placeholder="ejemp. Descripcion de Articulo">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Precio</p>
+							<input id="productPrecio" type="number" class="forminput" placeholder="ejemp. $0">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Stock</p>
+							<input id="productStock" type="number" class="forminput" placeholder="0">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Tipo</p>
+							<input id="productType" type="number" class="forminput" placeholder="1">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Imagen</p>
+							<input id="productImg" type="text" class="forminput" placeholder="ejemp. http://www.imagen.png">
+						</div>
+						<div class="contsend">
+							<p class="sendform" id="productSend">SEND</p>
+						</div>
+					</div>
+				</div>
+				<!--Formulario actualizacion de productos-->
+				<div class="form" id="updateProductForm" hidden>
+					<div class="formheader">
+						<p class="formtitle">Actualizar Producto</p>
+					</div>
+					<div class="formcontent">
+						<div class="continput">	
+							<p class="inputtxt">Nombre</p>
+							<input id="upProductName"  type="text" class="forminput" placeholder="ejemp. Product">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Descripcion</p>
+							<input id="upProductDescripcion" type="text" class="forminput" placeholder="ejemp. Descripcion de Articulo">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Precio</p>
+							<input id="upProductPrecio" type="number" class="forminput" placeholder="ejemp. $0">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Stock</p>
+							<input id="upProductStock" type="number" class="forminput" placeholder="0">
+						</div>
+						<!--<div class="continput">	
+							<p class="inputtxt">Tipo</p>
+							<input id="upProductType" type="number" class="forminput" placeholder="1">
+						</div>-->
+						<div class="continput">	
+							<p class="inputtxt">Imagen</p>
+							<input id="upProductImg" type="text" class="forminput" placeholder="ejemp. http://www.imagen.png">
+						</div>
+						<div class="contsend">
+							<p class="sendform" onclick="updateProduct(event)" id="productSendUpdate">SEND</p>
+						</div>
+					</div>
+				</div>
+				<!--Seccion de despliegue individual de productos-->
+				<div class="display" hidden>
+					<div class="formheader">
+						<img src="img/file.png" class="tabletitle">
+						<p class="txttable">Prueba</p>
+					</div>
+					<div class="formcontent">
+						<div class="continput">	
+							<p class="displaytxt">Txt Prueba</p>
+							<p class="txtdisplay">Texto de Prueba</p>
+						</div>
+						<div class="continput">	
+							<p class="displaytxt">Txt Prueba</p>
+							<p class="txtdisplay">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo molestiae saepe at illum iste quas quae, dolorem ducimus temporibus numquam accusantium, quam tempora magni dolore dolores aliquam dolor sunt nihil.</p>
+						</div>
+						<div class="continput">	
+							<p class="displaytxt">Txt Prueba</p>
+							<p class="txtdisplay">Texto de Prueba</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="productTypes" hidden>
+				<!--Seccion de elementos dec seleccion de operaciones con los clientes-->
+				<div class="elementsselection">
+					<p class="elementselection" id="showCategory">Ver Categorias</p>
+					<p class="elementselection" id="addCategory">Agregar Categorias</p>
+				</div>
+				<!--Tabla de despleige de clientes-->
+				<div class="table" id="TableCategories">
+					<div class="formheader">
+						<img src="img/table-grid.png" class="tabletitle">
+						<p class="txttable">Categorias</p>
+					</div>
+					<div class="tablecontent">
+						<table>
+							<thead>
+								<tr>
+									<th>Nombre</th>
+									<th>Descripcion</th>
+									<th>Opciones</th>
+								</tr>
+							</thead>
+							<tbody class="tbodyCategories">
+							</tbody>
+						</table>
+					</div>
+				</div>
+
+				<!--Formulario Alta categorias-->
+				<div class="form" id="addCategoryForm" hidden>
+					<div class="formheader">
+						<p class="formtitle">Agregar Categoria</p>
+					</div>
+					<div class="formcontent">
+						<div class="continput">	
+							<p class="inputtxt">Nombre</p>
+							<input id="categoryName"  type="text" class="forminput" placeholder="ejemp. Almacenamiento">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Descripcion</p>
+							<input id="categoryDescription" type="text" class="forminput" placeholder="ejemp. Descripcion de la categoria">
+						</div>
+						<div class="contsend">
+							<p class="sendform" id="categorySend">SEND</p>
+						</div>
+					</div>
+				</div>
+				<!--Formulario actualizacion de categorias-->
+				<div class="form" id="updateCategoryForm" hidden>
+					<div class="formheader">
+						<p class="formtitle">Actualizar Categoria</p>
+					</div>
+					<div class="formcontent">
+						<div class="continput">	
+							<p class="inputtxt">Nombre</p>
+							<input id="upCategoryName"  type="text" class="forminput" placeholder="ejemp. Cateogria">
+						</div>
+						<div class="continput">	
+							<p class="inputtxt">Descripcion</p>
+							<input id="upCategoryDescription" type="text" class="forminput" placeholder="ejemp. Descripcion de la categoria">
+						</div>
+						<div class="contsend">
+							<p class="sendform" onclick="updateCategory(event)" id="categorySendUpdate">SEND</p>
+						</div>
+					</div>
+				</div>
+				<!--Seccion de despliegue individual de clientes-->
+				<div class="display" hidden>
+					<div class="formheader">
+						<img src="img/file.png" class="tabletitle">
+						<p class="txttable">Prueba</p>
+					</div>
+					<div class="formcontent">
+						<div class="continput">	
+							<p class="displaytxt">Txt Prueba</p>
+							<p class="txtdisplay">Texto de Prueba</p>
+						</div>
+						<div class="continput">	
+							<p class="displaytxt">Txt Prueba</p>
+							<p class="txtdisplay">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo molestiae saepe at illum iste quas quae, dolorem ducimus temporibus numquam accusantium, quam tempora magni dolore dolores aliquam dolor sunt nihil.</p>
+						</div>
+						<div class="continput">	
+							<p class="displaytxt">Txt Prueba</p>
+							<p class="txtdisplay">Texto de Prueba</p>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="userPerf" hidden>
+				<div class="perfil">
+					<div class="formheader">
+						<img src="img/man-user2.png" class="tabletitle">
+						<p class="txttable">Mi Perfil</p>
+					</div>
+					<div class="formcontent">
+						<div class="continput">	
+							<p class="displaytxt">Nombre</p>
+							<p class="txtdisplay" id="txtNameInfo"></p>
+						</div>
+						<div class="continput">	
+							<p class="displaytxt">Usuario</p>
+							<p class="txtdisplay" id="txtUserInfo"></p>
+						</div>
+						<div class="continput">	
+							<p class="displaytxt">Correo</p>
+							<p class="txtdisplay" id="txtMailInfo"></p>
+						</div>
+					</div>
+				</div>
+			</div>	
+			<div class="form" id="updatePerfForm" hidden>
+				<div class="formheader">
+					<p class="formtitle">Actualizar Perfil</p>
+				</div>
+				<div class="formcontent">
+					<div class="continput">	
+						<p class="inputtxt">Nombre</p>
+						<input id="upUserName"  type="text" class="forminput" placeholder="ejemp. Juan">
+					</div>
+					<div class="continput">	
+						<p class="inputtxt">Apellido</p>
+						<input id="upUserLastName" type="text" class="forminput" placeholder="ejemp. Perez Martinez">
+					</div>
+					<div class="continput">	
+							<p class="inputtxt">Password</p>
+							<input id="upUserPassword" type="password" class="forminput" placeholder="***********">
+						</div>
+					<div class="contsend">
+						<p class="sendform" onclick="updateUser(event)" id="userSendUpdate">SEND</p>
+					</div>
+				</div>
+			</div>
+			<div class="display" hidden>
+				<div class="formheader">
+					<img src="img/file.png" class="tabletitle">
+					<p class="txttable">Prueba</p>
+				</div>
+				<div class="formcontent">
+					<div class="continput">	
+						<p class="displaytxt">Txt Prueba</p>
+						<p class="txtdisplay">Texto de Prueba</p>
+					</div>
+					<div class="continput">	
+						<p class="displaytxt">Txt Prueba</p>
+						<p class="txtdisplay">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Explicabo molestiae saepe at illum iste quas quae, dolorem ducimus temporibus numquam accusantium, quam tempora magni dolore dolores aliquam dolor sunt nihil.</p>
+					</div>
+					<div class="continput">	
+						<p class="displaytxt">Txt Prueba</p>
+						<p class="txtdisplay">Texto de Prueba</p>
+					</div>
+				</div>
+			</div>
+
+					
+		</div>
+	</div>
+	
+
+	
+
+	<!-- SCRIPT ZONE -->
+    <script src="js/swiper.jquery.min.js"></script>
+    <script src="js/swiper.min.js"></script>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/foundation.min.js"></script>
+    <script src="js/skrollr.min.js"></script>
+	<script src="js/mandrill.js"></script>
+	<!-- Minified version of `es6-promise-auto` below. -->
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/es6-promise@4/dist/es6-promise.auto.min.js"></script> 
+    <script src="js/swal.js"></script>
+    <script src="js/Chart.js"></script>
+    <script src="js/nicescroll.js"></script>
+    <script src="js/index.js"></script>
+	<!-- SCRIPT ZONE -->
+</body>
+</html>
