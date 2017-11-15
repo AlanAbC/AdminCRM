@@ -34,6 +34,52 @@ $(document).ready(function(){
 				$(".tbodyCategories").append("<tr><td>"+(response.data[i]).name+"</td><td>"+(response.data[i]).description+"</td><td><img src='img/edit.png' class='iconoptedit' onclick='showCategoryUpdate(event)' id='"+(response.data[i]).id+"'><img src='img/delete-button.png' onclick='deleteCategory(event)' id='"+(response.data[i]).id+"' class='iconoptdelete deleteClient'></td></tr>");
 			}
 		});
+		//Seccion que rellena la grafica de felicidad de los clientes
+		var urlGetClientsFeeling = url + "estadistics/clients_feeling/";
+		var dataClientsFeeling = [];
+		$.get(urlGetClientsFeeling, function(response) {
+			dataClientsFeeling.push(response.clients_feeling.one_stars);
+			dataClientsFeeling.push(response.clients_feeling.two_stars);
+			dataClientsFeeling.push(response.clients_feeling.tree_stars);
+			dataClientsFeeling.push(response.clients_feeling.forth_stars);
+			dataClientsFeeling.push(response.clients_feeling.five_stars);
+		});
+		var myChart = new Chart($("#myChartFeeling"), {
+		    type: 'bar',
+		    data: {
+		        labels: ["1 Estrellas", "2 Estrellas", "3 Estrellas", "4 Estrellas", "5 Estrellas"],
+		        datasets: [{
+		            label: '# de estrellas',
+		            data: dataClientsFeeling,
+		            backgroundColor: [
+		                'rgba(17, 174, 116, 0.5)',
+		                'rgba(82, 113, 255, 0.5)',
+		                'rgba(248, 14, 49, 0.5)',
+		                'rgba(41, 220, 216, 0.5)',
+		                'rgba(26, 248, 14, 0.5)',
+		                'rgba(255, 159, 64, 0.5)'
+		            ],
+		            borderColor: [
+		                'rgba(17, 174, 116,1)',
+		                'rgba(82, 113, 255, 1)',
+		                'rgba(248, 14, 49, 1)',
+		                'rgba(41, 220, 216, 1)',
+		                'rgba(26, 248, 14, 1)',
+		                'rgba(255, 159, 64, 1)'
+		            ],
+		            borderWidth: 1
+		        }]
+		    },
+		    options: {
+		        scales: {
+		            yAxes: [{
+		                ticks: {
+		                    beginAtZero:true
+		                }
+		            }]
+		        }
+		    }
+		});
 				
 	}else{
 		window.location.href = "login.html";
@@ -58,6 +104,7 @@ $("#verPerfil").click(function(event) {
 		$(".clientes").hide();
 		$(".productos").hide('400');
 		$(".productTypes").hide('400');
+		$(".estadisticas").hide('400');
 		$("#updatePerfForm").hide();
 		$(".userPerf").slideDown('400');
 		flagVerPerfil++;
@@ -73,6 +120,7 @@ $("#updatePerfil").click(function(event) {
 		$(".userPerf").hide();
 		$(".productos").hide('400');
 		$(".productTypes").hide('400');
+		$(".estadisticas").hide('400');
 		$("#upUserName").attr("placeholder", localStorage.getItem("Name"));
 		$("#upUserLastName").attr("placeholder", localStorage.getItem("LastName"));
 		$("#updatePerfForm").slideDown('400');
@@ -226,10 +274,10 @@ $(".logout").click(function(event) {
 						  'Usuario actualizado correctamente',
 						  'success'
 						)
-						 $("#clientName").val("");
-						 $("#clientLastName").val("");
-						 $("#clientUser").val("");
-						 $("#clientMail").val("");
+						 $("#upClientName").val("");
+						 $("#upClientLastName").val("");
+						 $("#upClientUser").val("");
+						 $("#upClientMail").val("");
 						 $("#clientPassword").val("");
 						 $("#updateClientForm").hide();
 						 $(".tbodyClients").html("");
@@ -667,31 +715,48 @@ $(".logout").click(function(event) {
 
 //Seccion de estadisticas
 
-//var ctx = document.getElementById("myChartFeeling").getContext('2d');
-var myChart = new Chart($("#myChartFeeling"), {
-    type: 'bar',
+
+
+
+var myChart = new Chart($("#myChartClients"), {
+    type: 'line',
     data: {
-        labels: ["1 Estrellas", "2 Estrellas", "3 Estrellas", "4 Estrellas", "5 Estrellas"],
+        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo"],
         datasets: [{
-            label: '# of Votes',
+            label: 'Total de clientes',
             data: [12, 19, 3, 5, 2, 3],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
+                'rgba(17, 174, 116, 0.5)'
             ],
             borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
+                'rgba(17, 174, 116,1)'
             ],
-            borderWidth: 1
+            fill: false,
+            borderWidth: 2
+        },
+        {
+            label: 'Clientes Agregados',
+            data: [11, 8, 14, 17, 2, 5],
+            backgroundColor: [
+                'rgba(41, 220, 216, 0.5)'
+            ],
+            borderColor: [
+                'rgba(41, 220, 216,1)'
+            ],
+            fill: false,
+            borderWidth: 2
+        },
+        {
+            label: 'Clientes Eliminados',
+            data: [14, 9, 13, 1, 18, 3],
+            backgroundColor: [
+                'rgba(26, 248, 14, 0.5)'
+            ],
+            borderColor: [
+                'rgba(26, 248, 14,1)'
+            ],
+            fill: false,
+            borderWidth: 2
         }]
     },
     options: {
@@ -704,3 +769,57 @@ var myChart = new Chart($("#myChartFeeling"), {
         }
     }
 });
+
+
+var myChart = new Chart($("#myChartProducts"), {
+    type: 'line',
+    data: {
+        labels: ["Enero", "Febrero", "Marzo", "Abril", "Mayo"],
+        datasets: [{
+            label: 'Total de productos',
+            data: [12, 19, 3, 5, 2, 3],
+            backgroundColor: [
+                'rgba(17, 174, 116, 0.5)'
+            ],
+            borderColor: [
+                'rgba(17, 174, 116,1)'
+            ],
+            fill: false,
+            borderWidth: 2
+        },
+        {
+            label: 'Productos Agregados',
+            data: [11, 8, 14, 17, 2, 5],
+            backgroundColor: [
+                'rgba(82, 113, 255, 0.5)'
+            ],
+            borderColor: [
+                'rgba(82, 113, 255,1)'
+            ],
+            fill: false,
+            borderWidth: 2
+        },
+        {
+            label: 'Productos Eliminados',
+            data: [14, 9, 13, 1, 18, 3],
+            backgroundColor: [
+                'rgba(248, 14, 49, 0.5)'
+            ],
+            borderColor: [
+                'rgba(248, 14, 49,1)'
+            ],
+            fill: false,
+            borderWidth: 2
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero:true
+                }
+            }]
+        }
+    }
+});
+

@@ -104,6 +104,9 @@
 	margin-left: 5px;
 	box-sizing: border-box;		
 }
+.iconoptedit:hover{
+	cursor: pointer;
+}
 .iconoptdelete{
 	position: relative;
 	float: left;
@@ -114,6 +117,9 @@
 	background: #F80E31;		
 	padding: 5px;
 	box-sizing: border-box;		
+}
+.iconoptdelete:hover{
+	cursor: pointer;
 }
 .contmenuusuer{
 	position: relative;
@@ -128,6 +134,9 @@
 	color: white;
 	font-size: 12pt;
 	margin-top: 13px;
+}
+.secmenuusuer:hover{
+	cursor: pointer;
 }
 .initialtxtmenuuser{
 	position: relative;
@@ -178,6 +187,9 @@
 	margin-left: 20%;
 	border-radius: 5px;
 	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+.elementsselection p:hover{
+	cursor: pointer;
 }
 .initialtxtmenusection{
 	position: relative;
@@ -439,6 +451,9 @@
 	color: white;
 	background: #0077BB;
 	box-shadow: 3px 3px 3px rgba(0,0,0,.2);
+}
+.sendform:hover{
+	cursor: pointer;
 }
 .img_product{
 	width: 50px;
